@@ -10,7 +10,10 @@ import { FotoEntity } from 'src/foto/foto.entity';
 export class AlbumService {
     constructor(
         @InjectRepository(AlbumEntity)
-        private readonly albumRepository: Repository<AlbumEntity>
+        private readonly albumRepository: Repository<AlbumEntity>,
+
+        @InjectRepository(FotoEntity)
+        private readonly fotoRepository: Repository<FotoEntity>
     ){}
 
     async createAlbum(album: AlbumEntity): Promise<AlbumEntity> {
