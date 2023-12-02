@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AlbumEntity } from './album.entity';
 import { Repository } from 'typeorm';
-import { FotoEntity } from 'src/foto/foto.entity';
 
 
 @Injectable()
@@ -12,8 +11,6 @@ export class AlbumService {
         @InjectRepository(AlbumEntity)
         private readonly albumRepository: Repository<AlbumEntity>,
 
-        @InjectRepository(FotoEntity)
-        private readonly fotoRepository: Repository<FotoEntity>
     ){}
 
     async createAlbum(album: AlbumEntity): Promise<AlbumEntity> {
@@ -31,10 +28,8 @@ export class AlbumService {
 
     async addPhotoToAlbum(id: string, idFoto: string): Promise<AlbumEntity> {
         const album: AlbumEntity = await this.albumRepository.findOne({where: {id: id}});
-        const foto: FotoEntity = await this.fotoRepository.findOne({where: {id: idFoto}});
         if (!album)
             throw new Error("El album no existe");
-        album.fotos = [...album.fotos, foto];
         return await this.albumRepository.save(album);
     }
 

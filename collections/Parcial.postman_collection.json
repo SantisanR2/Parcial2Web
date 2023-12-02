@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "8512e856-b450-4727-81fc-5363d7315b49",
+		"name": "Parcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20955979",
+		"_collection_link": "https://www.postman.com/vecindarioamigo/workspace/web/collection/20955979-8512e856-b450-4727-81fc-5363d7315b49?action=share&source=collection_link&creator=20955979"
+	},
+	"item": [
+		{
+			"name": "CrearAlbum",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"album_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Album1\",\r\n    \"fechaInicio\": \"01-01-2023\",\r\n    \"fechaFin\": \"02-02-2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/album"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAlbumById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/album/{{album_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAlbum",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseUrl}}/album/{{album_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearFoto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"foto_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"01-01-2023\",\r\n    \"apertura\": 12,\r\n    \"velObturacion\": 125,\r\n    \"ISO\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/foto"
+			},
+			"response": []
+		},
+		{
+			"name": "GetFotoById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/foto/{{foto_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllFotos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/foto"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteFoto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseUrl}}/foto/{{foto_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "CreateRedSocial",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"redSocial1\",\r\n    \"slogan\": \"Somos una red para todos\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/red-social"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearUsuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"usuario_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Jose\",\r\n    \"telefono\": \"3013575988\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "GetUsuarioById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/usuario/{{usuario_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllUsuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/usuario"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

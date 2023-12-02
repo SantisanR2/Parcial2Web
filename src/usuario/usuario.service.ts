@@ -12,7 +12,7 @@ export class UsuarioService {
     ){}
 
     async createUsuario(usuario: UsuarioEntity): Promise<UsuarioEntity> {
-        if(usuario.telefono.length == 10)
+        if(usuario.telefono.length != 10)
             throw new Error("El telefono solo puede tener 10 caracteres");
         return await this.usuarioRepository.save(usuario);
     }

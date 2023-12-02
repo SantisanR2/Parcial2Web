@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { FotoEntity } from 'src/foto/foto.entity';
+import { FotoEntity } from '../../foto/foto.entity';
 
 export const TypeOrmTestingConfig = () => [
   TypeOrmModule.forRoot({

@@ -12,10 +12,10 @@ export class AlbumEntity {
     titulo: string;
 
     @Column()
-    fechaInicio: Date;
+    fechaInicio: string;
 
     @Column()
-    fechaFin: Date;
+    fechaFin: string;
 
     @OneToMany(() => FotoEntity, foto => foto.album)
     fotos: FotoEntity[];

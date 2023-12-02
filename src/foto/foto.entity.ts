@@ -10,7 +10,7 @@ export class FotoEntity {
     id: string;
 
     @Column()
-    fecha: Date;
+    fecha: string;
 
     @Column()
     apertura: number;

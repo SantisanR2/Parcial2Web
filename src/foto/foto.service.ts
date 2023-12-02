@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { FotoEntity } from './foto.entity';
-import { AlbumEntity } from 'src/album/album.entity';
 
 @Injectable()
 export class FotoService {
@@ -11,8 +10,6 @@ export class FotoService {
         @InjectRepository(FotoEntity)
         private readonly fotoRepository: Repository<FotoEntity>,
 
-        @InjectRepository(AlbumEntity)
-        private readonly albumRepository: Repository<AlbumEntity>
     ){}
 
     async createFoto(foto: FotoEntity): Promise<FotoEntity> {
@@ -42,8 +39,7 @@ export class FotoService {
         const foto: FotoEntity = await this.fotoRepository.findOne({where: {id}});
         if (!foto)
             throw new Error("La foto no existe");
-        if(foto.album.fotos.length == 1)
-            this.albumRepository.remove(foto.album);
+
         await this.fotoRepository.remove(foto);
     }
 }
